@@ -1,0 +1,216 @@
+<html>
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/global.css" rel="stylesheet">
+		<script src="js/jquery-3.3.1.min.js"></script>		
+		<script src="js/bootstrap.min.js"></script>	
+		<script src="js/myscript.js"></script>	
+		<title>FTE Calculator - UiPath</title>
+	</head>
+	<body>
+		<body>
+			<!-- Navigation -->
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<ul class="nav navbar-nav">
+						  <li><a href="ComplexityCalculator.html">Process Complexity Calculator</a></li>
+						  <li class="active"><a href="#">FTE Calculator</a></li>
+						</ul>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="/">Home</a>
+							</li>
+												<li>
+								<a href="/account/logout/">Log In</a>
+							</li>            
+											</ul>
+					</div>-->
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container -->
+			</nav>
+ 
+		 <!-- Page Content -->
+		<div class="container" id="parentContainer">
+			<!-- Page Heading/Breadcrumbs -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Potential FTE Calculator<small></small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li class="active">Calculate FTEs</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
+				
+			<div class="main-container">
+				<div class="row">
+					<div class="col-md-8">		
+						<form class="form-horizontal" id="frmFTECalculator">
+							<fieldset>
+								<legend>FTE Calculator</legend>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="processName">Process Name</label>
+								  <div class="col-sm-8">
+									<input type="text" class="form-control" id="txtProcessName" placeholder="Enter process name" name="processName">
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="fte">FTE</label>
+								  <div class="col-sm-8">          
+									<input type="number" class="form-control" id="txtFte" placeholder="Enter number of FTEs" name="fte" min="0">
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="ruleBased">Rule Based</label>
+								  <div class="col-sm-8">          
+									<input type="number" class="form-control" id="txtRuleBased" placeholder="Enter rule based percentage" name="ruleBased" min="0" max="100">
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="optStandardInput">Standard Input</label>
+								  <div class="col-sm-8">          
+									<div class="radio-inline">
+									  <label><input type="radio" name="optStandardInput" value="Yes">Yes</label>
+									</div>
+									<div class="radio-inline">
+									  <label><input type="radio" name="optStandardInput" value="No">No</label>
+									</div>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="optFreeText">Free Text</label>
+								  <div class="col-sm-8">          
+									<div class="radio-inline">
+									  <label><input type="radio" name="optFreeText" value="Yes">Yes</label>
+									</div>
+									<div class="radio-inline">
+									  <label><input type="radio" name="optFreeText" value="No">No</label>
+									</div>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="selType">Type</label>
+								  <div class="col-sm-8">          
+									<select class="form-control" id="selType">
+										<option value="Manual and Repetitive">Manual and Repetitive</option>
+										<option value="Semi Manual and Repetitive">Semi Manual and Repetitive</option>
+										<option value="Automated">Automated</option>
+										<option value="Manual But Not Repetitive">Manual But Not Repetitive</option>
+									  </select>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="optProcessChange">Process expected to change in < 6 Months</label>
+								  <div class="col-sm-8">          
+									<div class="radio-inline">
+									  <label><input type="radio" name="optProcessChange" value="Yes">Yes</label>
+									</div>
+									<div class="radio-inline">
+									  <label><input type="radio" name="optProcessChange" value="No">No</label>
+									</div>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="exceptions">Exceptions</label>
+								  <div class="col-sm-8">          
+									<input type="number" class="form-control" id="txtExceptions" placeholder="Enter exceptions percentage" name="exceptions" min="0" max="100">
+								  </div>
+								</div>
+								<div class="form-group" id="calculateDiv">
+								  <label class="control-label col-sm-4" for="btnCalculate"></label>
+								  <div class="col-sm-6">          
+									<button type="button" class="btn btn-primary" id="btnCalculate">Calculate</button>
+									<button type="reset" class="btn btn-primary" id="btnReset">Reset</button>
+								  </div>
+								</div>
+							</fieldset>
+						</form>					
+					</div>
+				
+					<div class="col-md-4">
+						<form class="form-horizontal" id="frmFTEConstants">
+							<fieldset>
+								<legend>Weightage %</legend>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Rule Based Process</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control txtConstantsDiv" id="txtConsRuleBasedProcess" placeholder="" name="txtConsRuleBasedProcess" value="35" min="0" max="100" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Standard Input</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control txtConstantsDiv" id="txtConsStandardInput" placeholder="" name="txtConsStandardInput" value="25" min="0" max="100" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Free Text</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control txtConstantsDiv" id="txtConsFreeText" placeholder="" name="txtConsFreeText" value="15" min="0" max="100" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Type</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control txtConstantsDiv" id="txtConsType" placeholder="" name="txtConsType" value="25" min="0" max="100" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <div class="col-sm-3 col-sm-offset-9">
+									  <button type="button" class="btn btn-default btn-medium" id="btnEdit">
+										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									  </button>
+								   </div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row outputRow">
+					<div class="col-md-8">
+						<div class="form-group">
+						  <label class="control-label col-sm-4 col-sm-offset-4 bigFont">Potential FTE Benefits:</label>
+						  <div class="col-sm-2">          
+							<label class="control-label col-sm-2 left-align bigFont" id="lblFteBenefits">NA</label>
+						  </div>
+						  <!--<label class="control-label col-sm-4">Automation %:</label>
+						  <div class="col-sm-2">          
+							<label class="control-label col-sm-2 left-align" id="lblAutomationPer">NA</label>
+						  </div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<hr>
+						<p>Copyright © 2018 UiPath</p>
+					 </div>
+				 </div>
+			 </footer>
+
+		</div>
+    <!-- /.container -->
+	</body>
+</html>

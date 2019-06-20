@@ -1,0 +1,200 @@
+<html>
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/global.css" rel="stylesheet">
+		<script src="js/jquery-3.3.1.min.js"></script>		
+		<script src="js/bootstrap.min.js"></script>	
+		<script src="js/myscript_2.js"></script>	
+		<title>Process Complexity Calculator - UiPath</title>
+	</head>
+	<body>
+		<body>
+			<!-- Navigation -->
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<ul class="nav navbar-nav">
+						  <li class="active"><a href="#">Process Complexity Calculator</a></li>
+						  <li><a href="FTECalculator.html">FTE Calculator</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!--<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+				<div class="navbar-header">
+				  <a class="navbar-brand" href="#">UiPath</a>
+				</div>
+				<ul class="nav navbar-nav">
+				  <li class="active"><a href="#">Process Complexity Calculator</a></li>
+				  <li><a href="FTECalculator.html">FTE Calculator</a></li>
+				</ul>
+			  </div>
+			</nav>-->
+ 
+		 <!-- Page Content -->
+		<div class="container" id="parentContainer">
+			<!-- Page Heading/Breadcrumbs -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Complexity Calculator<small></small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a>
+						</li>
+						<li class="active">Calculate Process Complexity</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
+				
+			<div class="main-container">
+				<div class="row">
+					<div class="col-md-8">		
+						<form class="form-horizontal" id="frmComplexityCalculator">
+							<fieldset>
+								<legend>Complexity Calculator</legend>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="processName">Process Name</label>
+								  <div class="col-sm-8">
+									<input type="text" class="form-control" id="txtProcessName" placeholder="Enter process name" name="processName">
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="optStandardInput">Standard Input</label>
+								  <div class="col-sm-8">          
+									<div class="radio-inline">
+									  <label><input type="radio" name="optStandardInput" value="Yes">Yes</label>
+									</div>
+									<div class="radio-inline">
+									  <label><input type="radio" name="optStandardInput" value="No">No</label>
+									</div>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="freeText">Free Text</label>
+								  <div class="col-sm-8">          
+									<input type="number" class="form-control" id="txtFreeText" placeholder="Enter free text percentage" name="freeText" min="0" max="100">
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="selAppType">Application Type</label>
+								  <div class="col-sm-8">         
+									<select class="form-control" id="selAppType">
+										<option value="More than One Input">More than One Input</option>
+										<option value="Windows Applications">Windows Applications</option>
+										<option value="Web Applications">Web Applications</option>
+										<option value="Mainframes/Terminals">Mainframes/Terminals</option>
+										<option value="SAP">SAP</option>
+										<option value="Non-windows">Non-windows</option>
+									  </select>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="selNoScreens">No of Screens</label>
+								  <div class="col-sm-8">          
+									<select class="form-control" id="selNoScreens">
+										<option value="0-10">0-10</option>
+										<option value="11-20">11-20</option>
+										<option value="21-30">21-30</option>
+										<option value="More than 30">More than 30</option>
+									  </select>
+								  </div>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-3" for="optVDIScreen">VDI/Citrix</label>
+								  <div class="col-sm-8">          
+									<div class="radio-inline">
+									  <label><input type="radio" name="optVDIScreen" value="Yes">Yes</label>
+									</div>
+									<div class="radio-inline">
+									  <label><input type="radio" name="optVDIScreen" value="No">No</label>
+									</div>
+								  </div>
+								</div>
+								<div class="form-group" id="calculateDiv">
+								  <label class="control-label col-sm-4" for="btnCalculate"></label>
+								  <div class="col-sm-6">          
+									<button type="button" class="btn btn-primary" id="btnCalculateComplexity">Calculate</button>
+									<button type="reset" class="btn btn-primary" id="btnReset">Reset</button>
+								  </div>
+								</div>
+							</fieldset>
+						</form>					
+					</div>
+				
+					<div class="col-md-4">
+						<form class="form-horizontal" id="frmConstants">
+							<fieldset>
+								<legend>Weightage %</legend>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="consFreeText">Free Text</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control" id="txtConsFreeText" placeholder="" min="0" max="100" name="consFreeText" value="15" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Standard Input</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control" id="txtConsStructuredInput" placeholder="" min="0" max="100" name="consStructuredInput`" value="30" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Input/Applications</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control" id="txtConsInputApps" placeholder="" min="0" max="100" name="consInputApps" value="20" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <label class="control-label col-sm-8" for="">Number of Screens</label>
+								  <div class="col-sm-3 txtConstantsDiv">
+									<input type="number" class="form-control" id="txtConsNoOfScreens" placeholder="" min="0" max="100" name="consInputApps" value="35" disabled>
+								  </div>
+								  <label class="control-label col-sm-1 lblPer" for="">%</label>
+								</div>
+								<div class="form-group">
+								  <div class="col-sm-3 col-sm-offset-9">
+									  <button type="button" class="btn btn-default btn-medium" id="btnEdit">
+										<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									  </button>
+								   </div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row outputRow">
+					<div class="col-md-8">
+						<div class="form-group">
+						  <label class="control-label col-sm-4 col-sm-offset-4 bigFont">Complexity Level:</label>
+						  <div class="col-sm-2">          
+							<label class="control-label col-sm-2 left-align bigFont" id="lblComplexityLevel">NA</label>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<hr>
+						<p>Copyright © 2018 UiPath</p>
+					 </div>
+				 </div>
+			 </footer>
+
+		</div>
+    <!-- /.container -->
+	</body>
+</html>

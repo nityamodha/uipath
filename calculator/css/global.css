@@ -1,0 +1,64 @@
+#parentContainer {
+	margin-top: 60px;
+}
+
+.left-align{
+	text-align: left !important;
+}
+
+#calculateDiv{
+	padding-top: 20px;
+}
+
+#lblFteBenefits, #lblAutomationPer, #lblComplexityPer, #lblComplexityLevel{
+	color: red;
+}
+
+#frmConstants fieldset, #frmComplexityCalculator fieldset, #frmFTEConstants fieldset, #frmFTECalculator fieldset{
+	padding: .35em .625em .75em;
+    margin: 0 2px;
+    border: 1px solid silver;
+}
+
+#frmConstants legend, #frmComplexityCalculator legend, #frmFTEConstants legend, #frmFTECalculator legend{
+	width: 30%;
+    padding: 3px;
+    font-size: 15px;
+    border: 0;
+    font-weight: bold;
+}
+
+#frmComplexityCalculator legend{
+	width: 23%;
+}
+
+#frmFTECalculator legend{
+	width: 16%;
+}
+
+#frmConstants .txtConstantsDiv, #frmFTEConstants .txtConstantsDiv{
+	margin-right: 0px;
+    padding-right: 0px;
+}
+
+#frmConstants .lblPer, #frmFTEConstants .lblPer{
+	padding-left: 0px;
+    margin-left: -7px;
+}
+
+#frmConstants .txtConstantsDiv .form-control, #frmFTEConstants .txtConstantsDiv .form-control{
+	width: 85%;
+	height: 30px;
+}
+
+#frmConstants label.control-label, #frmComplexityCalculator label.control-label, #frmFTEConstants label.control-label, #frmFTECalculator label.control-label{
+	font-weight: lighter;
+}
+
+.bigFont{
+	font-size: 20px;
+}
+
+.outputRow{
+	margin-top: 30px;
+}
